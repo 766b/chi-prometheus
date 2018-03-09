@@ -60,7 +60,6 @@ func (c Middleware) handler(next http.Handler) http.Handler {
 		res := middleware.NewWrapResponseWriter(w, r.ProtoMajor)
 		c.reqs.WithLabelValues(http.StatusText(res.Status()), r.Method, r.URL.Path).Inc()
 		c.latency.WithLabelValues(http.StatusText(res.Status()), r.Method, r.URL.Path).Observe(float64(time.Since(start).Nanoseconds()) / 1000000)
-		next.ServeHTTP(w, r)
 	}
 	return http.HandlerFunc(fn)
 }

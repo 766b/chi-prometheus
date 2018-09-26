@@ -36,10 +36,10 @@ func Test_Logger(t *testing.T) {
 	n.ServeHTTP(recorder, req1)
 	n.ServeHTTP(recorder, req2)
 	body := recorder.Body.String()
-	if !strings.Contains(body, reqsName) {
-		t.Errorf("body does not contain request total entry '%s'", reqsName)
+	if !strings.Contains(body, "test_requests_total") {
+		t.Errorf("body does not contain request total entry '%s'", "test_requests_total")
 	}
-	if !strings.Contains(body, latencyName) {
-		t.Errorf("body does not contain request duration entry '%s'", reqsName)
+	if !strings.Contains(body, "test_duration_milliseconds") {
+		t.Errorf("body does not contain request duration entry '%s'", "test_duration_milliseconds")
 	}
 }

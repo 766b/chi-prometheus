@@ -13,11 +13,6 @@ var (
 	dflBuckets = []float64{300, 1200, 5000}
 )
 
-const (
-	reqsName    = "chi_requests_total"
-	latencyName = "chi_request_duration_milliseconds"
-)
-
 // Middleware is a handler that exposes prometheus metrics for the number of requests,
 // the latency and the response size, partitioned by status code, method and HTTP path.
 type Middleware struct {
@@ -30,7 +25,7 @@ func NewMiddleware(name string, buckets ...float64) func(next http.Handler) http
 	var m Middleware
 	m.reqs = prometheus.NewCounterVec(
 		prometheus.CounterOpts{
-			Name:        reqsName,
+			Name:        name + "_requests_total",
 			Help:        "How many HTTP requests processed, partitioned by status code, method and HTTP path.",
 			ConstLabels: prometheus.Labels{"service": name},
 		},
@@ -42,7 +37,7 @@ func NewMiddleware(name string, buckets ...float64) func(next http.Handler) http
 		buckets = dflBuckets
 	}
 	m.latency = prometheus.NewHistogramVec(prometheus.HistogramOpts{
-		Name:        latencyName,
+		Name:        name + "_duration_milliseconds",
 		Help:        "How long it took to process the request, partitioned by status code, method and HTTP path.",
 		ConstLabels: prometheus.Labels{"service": name},
 		Buckets:     buckets,

@@ -1,4 +1,4 @@
-module github.com/Remitly/chi-prometheus
+module github.com/remitly/chi-prometheus
 
 require (
 	github.com/766b/chi-prometheus v0.0.0-20180509160047-46ac2b31aa30

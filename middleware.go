@@ -1,4 +1,4 @@
-// Port https://github.com/zbindenren/negroni-prometheus for chi router
+// Package chiprometheus Port https://github.com/zbindenren/negroni-prometheus for chi router
 package chiprometheus
 
 import (

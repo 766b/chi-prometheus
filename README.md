@@ -1,4 +1,4 @@
-# chi-prometheus (Forked*)
+# chi-prometheus
 
 [Prometheus](http://prometheus.io) middleware for [chi](https://github.com/go-chi/chi).
 
@@ -67,8 +67,3 @@ An endpoint with the following information (stripped output):
     # TYPE chi_pattern_requests_total counter
     chi_pattern_requests_total{code="OK",method="GET",path="/metrics",service="test_service"} 1
     chi_pattern_requests_total{code="OK",method="GET",path="/users/{firstName}",service="test_service"} 2
-
-
-# Fork Information !!!
-
-  This project was forked from 766b with the intention of adding pattern matching to the logger. [Original Project Here](https://github.com/766b/chi-prometheus).
